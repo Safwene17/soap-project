@@ -1,0 +1,42 @@
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-6 col-lg-5">
+        <img src="../../assets/images/login/Login.jpg"
+          class="img-fluid" alt="Phone image">
+      </div>
+      <div class="col-md-6 col-lg-5">
+        <!-- Success Alert using NgbAlert -->
+        <ng-container [ngSwitch]="registrationSuccess">
+          <!-- Case: true -->
+          <ng-container *ngSwitchCase="true">
+            <ngb-alert type="success"
+              class="bg-transparent border-success border text-success d-flex align-items-center fs-5">
+              Registration Successful
+            </ngb-alert>
+          </ng-container>
+        </ng-container>
+
+        <form (ngSubmit)="login()">
+          <div class="form-outline mb-4">
+            <input type="email" id="form1Example13" class="form-control " [(ngModel)]="email"
+              [ngModelOptions]="{standalone: true}" required />
+            <label class="form-label" for="form1Example13">Email address</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="password" id="form1Example23" class="form-control " [(ngModel)]="password"
+              [ngModelOptions]="{standalone: true}" required />
+            <label class="form-label" for="form1Example23">Password</label>
+          </div>
+
+          <div class="d-flex justify-content-around align-items-center mb-4">
+            <a routerLink="/register">Create account?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

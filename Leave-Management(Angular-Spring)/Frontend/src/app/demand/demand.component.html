@@ -1,0 +1,56 @@
+<div class="card">
+    <div class="card-body">
+        <form >
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{decodedToken.name}}" >
+                    </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{decodedToken.email}}">
+                    </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Job</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{decodedToken.job}}">
+                    </div>
+            </div>
+            <br>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="inputCity">Leave type</label>
+                  <select id="form1Example4" class="form-select form-control-sm" [(ngModel)]="empObj.leave_type" [ngModelOptions]="{standalone: true}" required>
+                    <option value="Sick">Sick</option>
+                    <option value="Vacation">Vacation</option>
+                    <option value="Personal Matters">Personal Matters</option>
+                  </select>
+                </div>
+                
+                <br>
+
+                <div class="form-group col-md-4">
+                    <label for="inputCity">Leave Start</label>
+                    <input type="date" class="form-control" id="inputCity" [(ngModel)]="empObj.leave_start" [ngModelOptions]="{standalone: true}" required>
+                  
+                </div>
+                
+                <br>
+                
+                <div class="form-group col-md-4">
+                    <label for="inputZip">Leave End</label>
+                    <input type="date" class="form-control" id="inputZip" [(ngModel)]="empObj.leave_end" [ngModelOptions]="{standalone: true}" required>
+                </div>
+              </div>
+
+              <br>
+
+              <button type="submit" class="btn btn-primary" (click)="updateEmp()">Send</button>
+        </form>
+    </div>
+</div>

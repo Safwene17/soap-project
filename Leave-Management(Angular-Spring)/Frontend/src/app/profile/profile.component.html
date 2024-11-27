@@ -1,0 +1,89 @@
+  <div class="container">
+    <div class="row gutters">
+    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+        <div class="card-body">
+            <div class="account-settings">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <ng-container *ngIf="decodedToken.gender==='Female'; else maleImage"  class="card-title text-center mb-4">
+                            <img src="assets/images/users/user1.jpg" alt="user" width="300px" class="rounded-circle text-center mb-4">
+                          </ng-container>
+                          <ng-template #maleImage  class="card-title text-center mb-4">
+                            <img alt="user" width="200px" class="rounded-circle text-center mb-4" src="assets/images/users/user4.jpg">
+                          </ng-template>
+                    </div>
+
+                    <h5 class="user-name">{{decodedToken.name + ' ' + decodedToken.lastname}}</h5>
+                    <h6 class="user-email">{{decodedToken.email}}</h6>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+        <div class="card-body">
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h5 class="mb-2 text-primary">Personal Details</h5>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <input *ngIf="!editMode" readonly type="text" class="form-control-plaintext"  value="{{decodedToken.name}}" >
+                        <input *ngIf="editMode" type="text" class="form-control"   [(ngModel)]="empObj.name"  >
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="Name">Last name</label>
+                        <input *ngIf="!editMode" readonly type="text" class="form-control-plaintext"  value="{{decodedToken.lastname}}" >
+                        <input *ngIf="editMode" type="text" class="form-control"  [(ngModel)]="empObj.lastname"  >
+                    </div>
+                </div>
+                <br>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input *ngIf="!editMode" readonly type="text" class="form-control-plaintext"  value="{{decodedToken.phone}}" >
+                        <input *ngIf="editMode" type="text" class="form-control" [(ngModel)]="empObj.phone"  >
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h5 class="mt-3 mb-2 text-primary">Account Details</h5>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="eMail">Email</label>
+                        <input *ngIf="!editMode" readonly type="text" class="form-control-plaintext"  value="{{decodedToken.email}}" >
+                        <input *ngIf="editMode" type="text" class="form-control" [(ngModel)]="empObj.email"  >
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="sTate">Password</label>
+                        <input *ngIf="!editMode" type="password" class="form-control-plaintext" [value]="getMaskedPassword()" readonly>
+                        <input *ngIf="editMode" type="password" class="form-control" [(ngModel)]="empObj.password">  
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-right">
+                        <button type="button" id="submit" name="submit" class="btn btn-primary" style="margin-right: 10px;" (click)="updateProfile()">Update</button>
+                        <button type="button" id="submit" name="submit" class="btn btn-secondary" (click)="EditMode()" >Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>

@@ -1,0 +1,88 @@
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-6 col-lg-5">
+        <img src="../../assets/images/login/Login.jpg"
+          class="img-fluid" alt="Phone image">
+      </div>
+      <div class="col-md-6 col-lg-5">
+        <!-- Success Alert using NgbAlert -->
+        <ng-container [ngSwitch]="registrationSuccess">
+          <!-- Case: true -->
+          <ng-container *ngSwitchCase="true">
+            <ngb-alert type="success" class="bg-transparent border-success border text-success d-flex align-items-center fs-5">
+              Registration Successful
+            </ngb-alert>
+          </ng-container>
+        </ng-container>
+
+
+        <form (ngSubmit)="registeremp()">
+          
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form1Example1">Name</label>
+            <input type="text" id="form1Example1" name="name" class="form-control" [(ngModel)]="employeeObj.name" [ngModelOptions]="{standalone: true}" required />
+            <div *ngIf="!employeeObj.name && formSubmitted" class="text-danger mt-2" style="font-size: 90%;">Please provide a name!</div>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form1Example2">Last Name</label>
+            <input type="text" id="form1Example2" name="lastname" class="form-control" [(ngModel)]="employeeObj.lastname" [ngModelOptions]="{standalone: true}" required />
+            <div *ngIf="!employeeObj.lastname && formSubmitted" class="text-danger mt-2" style="font-size: 90%;">Please provide a last name!</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form1Example4">Gender</label>
+            <div class="form-outline mb-4">
+              <select id="form1Example4" name="gender" class="form-select form-control-sm" [(ngModel)]="employeeObj.gender" [ngModelOptions]="{standalone: true}" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+              <div *ngIf="!employeeObj.job && formSubmitted" class="text-danger mt-2" style="font-size: 90%;">Please chose a role!</div>
+            </div>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form1Example3">Email address</label>
+            <input type="email" id="form1Example3" name="email" class="form-control" [(ngModel)]="employeeObj.email" [ngModelOptions]="{standalone: true}" required />
+            <div *ngIf="!employeeObj.email && formSubmitted" class="text-danger mt-2" style="font-size: 90%;">Please provide an email</div>
+          </div>
+          
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form1Example3">Phone number</label>
+            <input type="text" id="form1Example3" class="form-control" [(ngModel)]="employeeObj.phone" [ngModelOptions]="{standalone: true}" required />
+            <div *ngIf="!validnumber() && formSubmitted" class="text-danger mt-2" style="font-size: 90%;">Please provide a valid 8-digit phone number</div>
+          </div>
+          
+          
+          <div class="form-group">
+            <label class="form-label" for="form1Example4">Role</label>
+            <div class="form-outline mb-4">
+              <select id="form1Example4" name="job" class="form-select form-control-sm" [(ngModel)]="employeeObj.job" [ngModelOptions]="{standalone: true}" required>
+                <option value="Frontend Developer">Frontend Developer</option>
+                <option value="Backend Developer">Backend Developer</option>
+                <option value="Scrum Master">Scrum Master</option>
+                <option value="Full-Stack Python Developer">Full-Stack Developer</option>
+                <option value="WordPress Developer">WordPress Developer</option>
+              </select>
+              <div *ngIf="!employeeObj.job && formSubmitted" class="text-danger mt-2" style="font-size: 90%;">Please chose a role!</div>
+            </div>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form1Example5">Password</label>
+            <input type="password" id="form1Example5" name="password" class="form-control" [(ngModel)]="employeeObj.password" required />
+            <div *ngIf="!employeeObj.password && formSubmitted" class="text-danger mt-2" style="font-size: 90%;">Please provide a password</div>
+          </div>
+
+          <div class="d-flex justify-content-around align-items-center mb-4">
+            <span>Already have an account? <a routerLink="/login">Sign in</a></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" (click)="onSubmit()">Create Account</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

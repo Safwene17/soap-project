@@ -1,0 +1,46 @@
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle text-nowrap table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-dark font-medium fs-4">Full Name</th>
+                        <th class="text-dark font-medium fs-4">Job</th>
+                        <th class="text-dark font-medium fs-4">Email</th>
+                        <th class="text-dark font-medium fs-4">Phone number</th>
+                        <th class="text-dark font-medium fs-4">Role</th>
+                        <th class="text-dark font-medium fs-4" *ngIf="decodedToken.role === 'admin'">Operations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let item of Employees">
+                        <tr >
+                            <td > 
+                                {{item.name +' '+item.lastname}} 
+                            </td>
+                            <td>
+                                {{item.job}}
+                            </td>
+                            <td>
+                                {{item.email}}
+                            </td>
+                            <td>
+                                {{item.phone}}
+                            </td>
+                            <td>
+                                {{item.role}}
+                            </td>
+                            <td *ngIf="decodedToken.role === 'admin'">
+                                <button *ngIf="item.role==='employee'" style="margin-left: 5px;" type="button" class="btn btn-outline-primary" (click)="MakeAdmin(item.id)"> Make Admin </button>
+                                <button *ngIf="item.role==='admin'" style="margin-left: 5px;" type="button" class="btn btn-outline-success" (click)="RemoveAdmin(item.id)"> Remove Admin </button>
+                                <button style="margin-left: 5px;" type="button" class="btn btn-outline-danger" (click)="FireEmp(item.id)"> Fire Employee </button>   
+                            </td>
+                        </tr>
+                    </ng-container> 
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
